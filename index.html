@@ -1007,7 +1007,7 @@
             const groups = document.querySelectorAll(".fade-group");
             const scalers = document.querySelectorAll(".scale-in");
 
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         if (entry.target.classList.contains("fade-group")) {
@@ -1016,14 +1016,8 @@
                         if (entry.target.classList.contains("scale-in")) {
                             entry.target.classList.add("scale-in-active");
                         }
-                    } else {
-                        // remove when leaving viewport
-                        if (entry.target.classList.contains("fade-group")) {
-                            entry.target.classList.remove("fade-active");
-                        }
-                        if (entry.target.classList.contains("scale-in")) {
-                            entry.target.classList.remove("scale-in-active");
-                        }
+
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.2 });
