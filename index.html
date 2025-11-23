@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Landing</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .figtree,
+        * {
+            font-family: 'Figtree', sans-serif;
+        }
+
+        .title-color {
+            color: #2f3036 !important;
+        }
+
+        .gallery img:nth-child(3n) {
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .gallery img:nth-child(4n) {
+            height: 340px;
+            object-fit: cover;
+        }
+
+        .gallery img:nth-child(5n) {
+            height: 420px;
+            object-fit: cover;
+        }
+
+        .gallery img:nth-child(2n) {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .faq-section {
+            background: #f9fafb;
+            /* gray-50 */
+            padding: 80px 0;
+        }
+
+        .faq-wrapper {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: start;
+            /* FIX: Prevent vertical centering shift */
+        }
+
+        /* Left column */
+        .faq-left .faq-label {
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+
+        .faq-left .faq-title {
+            font-weight: 700;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .faq-btn {
+            padding: 12px 24px;
+            background: black;
+            color: white;
+            border-radius: 50px;
+            border: none;
+        }
+
+        /* Right column */
+        .faq-right {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* FAQ Item */
+        .faq-item {
+            width: 100%;
+        }
+
+        .faq-item input {
+            display: none;
+        }
+
+        /* QUESTION BAR */
+        .faq-question {
+            display: block;
+            background: white;
+            padding: 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 550;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        /* expand arrow */
+        .faq-question::after {
+            content: "+";
+            position: absolute;
+            right: 24px;
+            font-size: 22px;
+            top: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        /* When expanded */
+        .faq-item input:checked+.faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        /* ANSWER */
+        .faq-answer {
+            background: #f3f4f6;
+            margin-top: -18px;
+            /* CONNECT body to bar */
+            padding: 0 22px;
+            border-radius: 0 0 40px 40px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.3s ease;
+        }
+
+        /* Expanded answer */
+        .faq-item input:checked~.faq-answer {
+            max-height: 300px;
+            padding: 28px 22px 22px;
+        }
+
+        @media (max-width:800px) {
+            .faq-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Base hidden state */
+        .fade-group>* {
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(2px);
+            transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+        }
+
+        /* Stagger */
+        .fade-group>*:nth-child(1) {
+            transition-delay: .1s;
+        }
+
+        .fade-group>*:nth-child(2) {
+            transition-delay: .2s;
+        }
+
+        .fade-group>*:nth-child(3) {
+            transition-delay: .3s;
+        }
+
+        .fade-group>*:nth-child(4) {
+            transition-delay: .4s;
+        }
+
+        .fade-group>*:nth-child(5) {
+            transition-delay: .5s;
+        }
+
+        .fade-group>*:nth-child(6) {
+            transition-delay: .6s;
+        }
+
+        .fade-group>*:nth-child(7) {
+            transition-delay: .7s;
+        }
+
+        .fade-group>*:nth-child(8) {
+            transition-delay: .8s;
+        }
+
+        .fade-group>*:nth-child(9) {
+            transition-delay: .9s;
+        }
+
+        .fade-group>*:nth-child(10) {
+            transition-delay: 1.0s;
+        }
+
+        .fade-group>*:nth-child(11) {
+            transition-delay: 1.1s;
+        }
+
+        .fade-group>*:nth-child(12) {
+            transition-delay: 1.2s;
+        }
+
+        .fade-group>*:nth-child(13) {
+            transition-delay: 1.3s;
+        }
+
+        .fade-group>*:nth-child(14) {
+            transition-delay: 1.4s;
+        }
+
+        .fade-group>*:nth-child(15) {
+            transition-delay: 1.5s;
+        }
+
+        .fade-group>*:nth-child(16) {
+            transition-delay: 1.6s;
+        }
+
+        .fade-group>*:nth-child(17) {
+            transition-delay: 1.7s;
+        }
+
+        .fade-group>*:nth-child(18) {
+            transition-delay: 1.8s;
+        }
+
+        .fade-group>*:nth-child(19) {
+            transition-delay: 1.9s;
+        }
+
+        .fade-group>*:nth-child(20) {
+            transition-delay: 2.0s;
+        }
+
+        /* Active state */
+        .fade-active>* {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Optional reverse direction */
+        .fade-down>* {
+            transform: translateY(-20px);
+        }
+
+        .fade-child {
+            opacity: 0 !important;
+            transform: translateY(20px);
+            filter: blur(2px);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease !important;
+        }
+
+        /* When parent activates */
+        .fade-active .fade-child {
+            opacity: 1 !important;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* initial state */
+        .scale-in {
+            transform: scale(1);
+            opacity: 0;
+            transition: transform 1.8s ease, opacity 0.8s ease;
+        }
+
+        /* activated when in viewport */
+        .scale-in-active {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="w-full max-w-7xl mx-auto px-6 py-6 grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        <!-- LEFT COLUMN -->
+        <div class="flex flex-col justify-between">
+
+            <!-- TOP BAR -->
+            <div class="fade-group flex items-center justify-between">
+                <h1 class="text-xl font-semibold tracking-wide">LuxeDwell</h1>
+
+                <div class="fade-group flex items-center gap-4">
+                    <!-- Phone Icon -->
+                    <div
+                        class="w-10 h-10 rounded-full bg-black/10 shadow flex items-center justify-center transition duration-300 hover:bg-black/40 cursor-pointer">
+                        <i class="bi bi-telephone-fill text-gray-700 text-sm"></i>
+                    </div>
+
+                    <!-- Menu Icon -->
+                    <div
+                        class="w-10 h-10 rounded-full bg-black/10 shadow flex items-center justify-center transition duration-300 hover:bg-black/40 cursor-pointer">
+                        <i class="bi bi-list text-gray-700 text-lg"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MIDDLE SECTION -->
+            <div class="fade-group mt-16">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight max-w-lg title-color">
+                    Find Your Ideal Property in Minutes
+                </h2>
+
+                <!-- Short Description -->
+                <p class="text-gray-600 mt-4 max-w-md">
+                    Trusted real estate advisors helping you discover premium homes effortlessly.
+                </p>
+
+                <!-- Testimonials Line -->
+                <div class="flex items-center gap-4 mt-8">
+                    <div class="flex -space-x-2">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-300 flex items-center justify-center text-gray-800 font-bold text-sm">
+                            JW
+                        </div>
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 font-bold text-sm">
+                            EC
+                        </div>
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 font-bold text-sm">
+                            OL
+                        </div>
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-three-dots" viewBox="0 0 16 16">
+                                <path
+                                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-700 text-sm">
+                        Trusted by hundreds of happy buyers worldwide.
+                    </p>
+                </div>
+
+                <!-- Button -->
+                <button
+                    class="fade-child mt-10 flex items-center gap-3 bg-transparent border-2 border-neutral-900 text-neutral-900 p-1.5 pr-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-neutral-900 hover:text-white hover:scale-105 hover:shadow-xl">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center bg-white text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-900 hover:text-white">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+                    Explore Listings
+                </button>
+
+            </div>
+
+            <!-- STATS ROW -->
+            <div class="flex justify-center mt-16">
+                <div class="fade-group inline-flex items-center border border-gray-300 rounded-lg overflow-hidden">
+
+                    <!-- Stat Item -->
+                    <div class="flex flex-col items-center px-6 py-3">
+                        <p class="text-2xl font-bold">100%</p>
+                        <p class="text-gray-600 text-sm">Reply rate</p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="w-px bg-gray-300"></div>
+
+                    <!-- Stat Item -->
+                    <div class="flex flex-col items-center px-6 py-3">
+                        <p class="text-2xl font-bold">4.95</p>
+                        <p class="text-yellow-500">★★★★★</p>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="w-px bg-gray-300"></div>
+
+                    <!-- Stat Item -->
+                    <div class="flex flex-col items-center px-6 py-3">
+                        <p class="text-2xl font-bold">165</p>
+                        <p class="text-gray-600 text-sm">Reviews</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN (HERO IMAGE) -->
+        <div class="w-full h-full max-h-[600px] rounded-3xl" style="overflow: hidden;">
+            <img src="assets/images/background.webp" class="scale-in w-full h-full object-cover" />
+        </div>
+
+    </section>
+
+    <section class="mx-6 mb-6 rounded-3xl overflow-hidden relative">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="assets/images/background-2.webp" alt="Background" class="w-full h-full object-cover" />
+            <!-- Optional overlay for better contrast -->
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="fade-group relative z-10 flex flex-col items-center text-center text-white py-20 px-8">
+            <h2 class="text-4xl font-bold mb-4">Find Your Dream Home</h2>
+            <p class="text-lg max-w-xl mb-8">
+                Explore premium listings in top locations. We make it easy to find the perfect property for you.
+            </p>
+            <button
+                class="fade-child mt-6 flex items-center gap-3 bg-white text-black p-1.5 pr-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-gray-100 hover:scale-105 hover:shadow-xl">
+                <div
+                    class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full transition-all duration-300 hover:bg-white hover:text-black">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+                Get In Touch
+            </button>
+        </div>
+    </section>
+
+    <section class="w-full max-w-7xl mx-auto bg-white py-20 px-6 overflow-hidden">
+        <div class="fade-group text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4 title-color">What We Offer</h2>
+            <p class="text-lg max-w-2xl mx-auto text-gray-600">
+                Our real estate agents provide premium services to make your buying and selling experience smooth and
+                efficient.
+            </p>
+        </div>
+
+        <div class="relative w-full max-w-full overflow-hidden mb-8">
+            <div class="flex w-max animate-marquee group">
+
+                <div class="flex gap-6 pr-6 shrink-0">
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-house-door-fill"></i>
+                        </div>
+                        Home Listings
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        Property Valuation
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        Market Analysis
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-file-text-fill"></i>
+                        </div>
+                        Contract Support
+                    </div>
+                </div>
+
+                <div class="flex gap-6 pr-6 shrink-0" aria-hidden="true">
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-house-door-fill"></i>
+                        </div>
+                        Home Listings
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        Property Valuation
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        Market Analysis
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-file-text-fill"></i>
+                        </div>
+                        Contract Support
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative w-full max-w-full overflow-hidden">
+            <div class="flex w-max animate-marquee-reverse group">
+
+                <div class="flex gap-6 pr-6 shrink-0">
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        Great Location
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        Walkable Area
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-eye-fill"></i>
+                        </div>
+                        Stunning Views
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        Modern Design
+                    </div>
+                </div>
+
+                <div class="flex gap-6 pr-6 shrink-0" aria-hidden="true">
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        Great Location
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        Walkable Area
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-eye-fill"></i>
+                        </div>
+                        Stunning Views
+                    </div>
+                    <div class="flex items-center bg-white shadow rounded-full p-3 shrink-0 border border-gray-100">
+                        <div class="w-10 h-10 flex items-center justify-center bg-black text-white rounded-full mr-3">
+                            <i class="bi bi-building"></i>
+                        </div>
+                        Modern Design
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        /* Because we moved the gap into the padding (pr-6) of the items,
+   The total width of the container is exactly 2x the width of one set.
+   Therefore, -50% is now mathematically perfect. 
+*/
+
+        @keyframes marquee-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marquee-right {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee-left 30s linear infinite;
+        }
+
+        .animate-marquee-reverse {
+            animation: marquee-right 30s linear infinite;
+        }
+
+        /* Optional: Pause animation on hover for better UX */
+        .group:hover {
+            animation-play-state: paused;
+        }
+    </style>
+
+    <section class="gallery w-full max-w-7xl mx-auto pt-20 pb-6 px-6 bg-gray-50">
+        <!-- Header -->
+        <div class="fade-group text-center mb-12">
+            <h2 class="text-4xl font-bold mb-4 title-color">Property Gallery</h2>
+            <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                Explore a curated selection of interiors, exteriors, and architectural highlights.
+            </p>
+
+            <button
+                class="fade-child mt-6 mx-auto flex items-center gap-3 bg-neutral-900 text-white p-1.5 pr-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-neutral-800 hover:scale-105 hover:shadow-xl">
+                <div
+                    class="w-10 h-10 flex items-center justify-center bg-white text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-900 hover:text-white">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+                View All Properties
+            </button>
+
+        </div>
+
+        <!-- Masonry Grid -->
+        <div class="fade-group columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+            <!-- Repeat the same image many times -->
+            <img src="assets/images/gallery-1.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow-sm transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-2.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow-lg transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-3.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-4.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow-md transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-5.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-6.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow-sm transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-7.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow-lg transition duration-300 ease-in-out hover:brightness-75">
+
+            <img src="assets/images/gallery-8.webp"
+                class="w-full mb-4 rounded-xl break-inside-avoid shadow transition duration-300 ease-in-out hover:brightness-75">
+        </div>
+    </section>
+
+    <section class="mx-6 mb-6 rounded-3xl overflow-hidden relative">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="assets/images/background-3.webp" alt="Background" class="w-full h-full object-cover" />
+            <!-- Optional overlay for better contrast -->
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="fade-group relative z-10 flex flex-col items-center text-center text-white py-20 px-8">
+            <h2 class="text-4xl font-bold mb-4">Special Offer</h2>
+            <p class="text-lg max-w-xl mb-8">
+                Book 30+ days ahead and enjoy 15% savings
+            </p>
+            <button
+                class="fade-child mt-10 flex items-center gap-3 bg-transparent border-2 border-neutral-900 text-neutral-900 p-1.5 pr-3.5 rounded-full shadow-md bg-white transition-all duration-300 hover:bg-neutral-900 hover:text-white hover:scale-105 hover:shadow-xl">
+                <div
+                    class="w-10 h-10 flex items-center justify-center bg-white text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-900 hover:text-white">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+                Learn More
+            </button>
+        </div>
+    </section>
+
+    <section class="w-full max-w-7xl mx-auto py-20 px-6 bg-white">
+        <!-- Header -->
+        <div class="fade-group text-center mb-12">
+            <h2 class="text-4xl font-bold mb-2 title-color">Reviews</h2>
+
+            <div class="flex items-center justify-center gap-2 text-3xl font-semibold">
+                <span>4.98</span>
+                <span class="text-yellow-500">★★★★★</span>
+            </div>
+
+            <p class="max-w-xl mx-auto mt-4 text-gray-600 text-lg">
+                We’re proud to deliver a stay that guests consistently love.
+            </p>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="fade-group grid grid-cols-2 md:flex md:justify-center md:gap-10 gap-6 mb-16">
+
+            <div class="text-center">
+                <p class="text-2xl font-bold">4.9</p>
+                <p class="text-gray-600 text-sm">Cleanliness</p>
+            </div>
+
+            <div class="text-center">
+                <p class="text-2xl font-bold">5.0</p>
+                <p class="text-gray-600 text-sm">Accuracy</p>
+            </div>
+
+            <div class="text-center">
+                <p class="text-2xl font-bold">5.0</p>
+                <p class="text-gray-600 text-sm">Check-in</p>
+            </div>
+
+            <div class="text-center">
+                <p class="text-2xl font-bold">5.0</p>
+                <p class="text-gray-600 text-sm">Communication</p>
+            </div>
+
+        </div>
+
+        <!-- Testimonials Grid -->
+        <div class="fade-group grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="p-6 bg-white rounded-xl shadow border border-gray-100">
+                <!-- Header -->
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            JW
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-lg">John Walker</p>
+                            <p class="text-sm text-gray-500">Los Angeles, USA</p>
+                        </div>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="flex items-center gap-1 text-lg font-semibold">
+                        <span>5.0</span>
+                        <span class="text-yellow-500 text-base">★</span>
+                    </div>
+                </div>
+
+                <!-- Review -->
+                <p class="text-gray-700 mb-4">
+                    Exceptional service and truly seamless experience. Highly recommended.
+                </p>
+
+                <!-- Date -->
+                <p class="text-sm text-gray-400">January 2024</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow border border-gray-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            EC
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg">Emily Carter</p>
+                            <p class="text-sm text-gray-500">Austin, Texas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-lg font-semibold">
+                        <span>4.8</span>
+                        <span class="text-yellow-500 text-base">★</span>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Friendly host and incredible attention to detail. Would definitely book again.
+                </p>
+                <p class="text-sm text-gray-400">March 2024</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow border border-gray-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            OS
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg">Oliver Smith</p>
+                            <p class="text-sm text-gray-500">Miami, Florida</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-lg font-semibold">
+                        <span>5.0</span>
+                        <span class="text-yellow-500 text-base">★</span>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    This is exactly how every real estate experience should feel.
+                </p>
+                <p class="text-sm text-gray-400">February 2024</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow border border-gray-100">
+                <!-- Header -->
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            JW
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-lg">John Walker</p>
+                            <p class="text-sm text-gray-500">Los Angeles, USA</p>
+                        </div>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="flex items-center gap-1 text-lg font-semibold">
+                        <span>5.0</span>
+                        <span class="text-yellow-500 text-base">★</span>
+                    </div>
+                </div>
+
+                <!-- Review -->
+                <p class="text-gray-700 mb-4">
+                    Exceptional service and truly seamless experience. Highly recommended.
+                </p>
+
+                <!-- Date -->
+                <p class="text-sm text-gray-400">January 2024</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow border border-gray-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            EC
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg">Emily Carter</p>
+                            <p class="text-sm text-gray-500">Austin, Texas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-lg font-semibold">
+                        <span>4.8</span>
+                        <span class="text-yellow-500 text-base">★</span>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Friendly host and incredible attention to detail. Would definitely book again.
+                </p>
+                <p class="text-sm text-gray-400">March 2024</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow border border-gray-100">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-black-300 font-bold text-lg">
+                            OS
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg">Oliver Smith</p>
+                            <p class="text-sm text-gray-500">Miami, Florida</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 text-lg font-semibold">
+                        <span>5.0</span>
+                        <span class="text-yellow-500 text-base">★</span>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    This is exactly how every real estate experience should feel.
+                </p>
+                <p class="text-sm text-gray-400">February 2024</p>
+            </div>
+
+        </div>
+
+        <!-- Button -->
+        <button
+            class="mt-10 mx-auto flex items-center gap-3 bg-neutral-900 text-white p-1.5 pr-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-neutral-800 hover:scale-105 hover:shadow-xl">
+            <div
+                class="w-10 h-10 flex items-center justify-center bg-white text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-900 hover:text-white">
+                <i class="bi bi-arrow-up-right"></i>
+            </div>
+            View More
+        </button>
+    </section>
+
+    <section class="faq-section">
+        <div class="faq-wrapper">
+
+            <!-- LEFT COLUMN -->
+            <div class="faq-left">
+                <h3 class="faq-label">FAQ</h3>
+                <h2 class="faq-title title-color">Frequently Asked Questions</h2>
+                <!-- Button -->
+                <button
+                    class="mt-10 flex items-center gap-3 bg-transparent border-2 border-neutral-900 text-neutral-900 p-1.5 pr-3.5 rounded-full shadow-md transition-all duration-300 hover:bg-neutral-900 hover:text-white hover:scale-105 hover:shadow-xl">
+                    <div
+                        class="w-10 h-10 flex items-center justify-center bg-white text-neutral-900 rounded-full transition-all duration-300 hover:bg-neutral-900 hover:text-white">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+                    Explore Listings
+                </button>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="faq-right">
+
+                <!-- ONE FAQ ITEM -->
+                <div class="faq-item">
+                    <input type="checkbox" id="faq1">
+                    <label class="faq-question" for="faq1">What is your check-in policy?</label>
+                    <div class="faq-answer">
+                        Our standard check-in time is 3 PM. Early check-in is subject to availability.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq2">
+                    <label class="faq-question" for="faq2">Are pets allowed?</label>
+                    <div class="faq-answer">
+                        We allow small pets, and a cleaning fee may apply.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" id="faq3">
+                    <label class="faq-question" for="faq3">Do you offer long-term stays?</label>
+                    <div class="faq-answer">
+                        Yes, we offer discounted weekly and monthly stays.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-neutral-900 text-white py-24">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <h2 class="text-center text-4xl font-semibold mb-20">
+                Where You’ll Stay
+            </h2>
+
+            <div class="flex flex-col md:flex-row md:divide-x md:divide-neutral-700 text-center">
+
+                <!-- Item -->
+                <div class="flex-1 px-8 py-10">
+                    <h4 class="text-sm text-neutral-400 mb-2 tracking-wide uppercase">Neighborhood</h4>
+                    <p class="text-xl font-medium max-w-xs mx-auto leading-relaxed">
+                        Upper East Side, Manhattan
+                    </p>
+                </div>
+
+                <!-- Item -->
+                <div class="flex-1 px-8 py-10">
+                    <h4 class="text-sm text-neutral-400 mb-2 tracking-wide uppercase">Address</h4>
+                    <p class="text-xl font-medium max-w-xs mx-auto leading-relaxed">
+                        953 5th Avenue, New York, USA
+                    </p>
+                </div>
+
+                <!-- Item -->
+                <div class="flex-1 px-8 py-10">
+                    <h4 class="text-sm text-neutral-400 mb-2 tracking-wide uppercase">Floor</h4>
+                    <p class="text-xl font-medium max-w-xs mx-auto leading-relaxed">
+                        40th Floor With Elevator
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-neutral-900 text-white border-t border-neutral-800 py-20">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <!-- Menu -->
+            <nav class="flex flex-wrap justify-center gap-8 text-sm mb-14 text-neutral-300">
+                <a href="#" class="hover:text-white transition">Home</a>
+                <a href="#" class="hover:text-white transition">Listings</a>
+                <a href="#" class="hover:text-white transition">Services</a>
+                <a href="#" class="hover:text-white transition">About</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </nav>
+
+            <!-- Main Footer CTA -->
+            <div class="text-center max-w-2xl mx-auto">
+                <h3 class="text-3xl font-semibold mb-4">
+                    Ready to Find Your Perfect Property?
+                </h3>
+                <p class="text-neutral-300 text-lg leading-relaxed mb-8">
+                    Whether you're buying or selling, our team ensures a seamless and professional real estate
+                    experience.
+                </p>
+
+                <!-- Button -->
+                <button
+                    class="mt-6 flex items-center gap-3 bg-neutral-900 text-white p-1.5 pr-3.5 rounded-full shadow hover:bg-neutral-800 transition mx-auto border border-neutral-700">
+                    <div class="w-10 h-10 flex items-center justify-center bg-white text-neutral-900 rounded-full">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </div>
+                    Contact Us
+                </button>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const groups = document.querySelectorAll(".fade-group");
+            const scalers = document.querySelectorAll(".scale-in");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains("fade-group")) {
+                            entry.target.classList.add("fade-active");
+                        }
+                        if (entry.target.classList.contains("scale-in")) {
+                            entry.target.classList.add("scale-in-active");
+                        }
+                    } else {
+                        // remove when leaving viewport
+                        if (entry.target.classList.contains("fade-group")) {
+                            entry.target.classList.remove("fade-active");
+                        }
+                        if (entry.target.classList.contains("scale-in")) {
+                            entry.target.classList.remove("scale-in-active");
+                        }
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            groups.forEach(group => observer.observe(group));
+            scalers.forEach(item => observer.observe(item));
+        });
+    </script>
+
+</body>
+
+</html>
